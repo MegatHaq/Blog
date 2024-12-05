@@ -27,15 +27,6 @@ export function SideBarComponent(props: SideBarProps) {
     },
   };
 
-  const list = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-    },
-  };
-
   const { header, item } = props;
 
   const [isOpen, setIsOpen] = React.useState(true);

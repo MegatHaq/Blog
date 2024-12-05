@@ -2,7 +2,6 @@
 
 import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
-import { motion } from "motion/react";
 import React from "react";
 
 type HomeBadgeProps = {

@@ -4,17 +4,6 @@ import "./globals.css";
 import { NavBar } from "./components/navbar";
 import { SideBar } from "./components/sidebar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 const Roboto = localFont({
   src: "./fonts/Roboto-Regular-webfont.woff",
   variable: "--font-roboto",

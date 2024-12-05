@@ -3,8 +3,6 @@ import { badgeContent } from "@/lib/constants";
 import { Cards } from "./page-components/home-page/cards";
 import { cardContent } from "@/lib/constants";
 
-//title and decsription and image
-
 export default function Home() {
   return (
     <div className="font-[family-name:var(--font-roboto)] h-screen px-[5vw] w-4/5 overflow-auto homescrollbar">
