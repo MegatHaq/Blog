@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView, motion } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export function WhyBlog() {
   const ref = useRef(null);
