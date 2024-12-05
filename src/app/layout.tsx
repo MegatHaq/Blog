@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { NavBar } from "./components/navbar";
+import { SideBar } from "./components/sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -10,6 +12,12 @@ const geistSans = localFont({
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
+const Roboto = localFont({
+  src: "./fonts/Roboto-Regular-webfont.woff",
+  variable: "--font-roboto",
   weight: "100 900",
 });
 
@@ -25,10 +33,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${Roboto.variable} bg-gray-50`}>
+        <div className="flex flex-col h-screen overflow-hidden">
+          <NavBar />
+          <div className="flex">
+            <SideBar />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
