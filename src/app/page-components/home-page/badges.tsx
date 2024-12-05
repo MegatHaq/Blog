@@ -3,6 +3,7 @@
 import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { motion } from "motion/react";
 
 type HomeBadgeProps = {
   label: string;
@@ -13,7 +14,11 @@ export function HomeBadge(props: HomeBadgeProps) {
   const { label, uri } = props;
 
   return (
-    <div className="hover:border-blue-400 border-transparent rounded-xl px-[12px] py-[10px] hover:cursor-pointer border-2 bg-blue-100 flex gap-2 group">
+    <motion.div
+      whileTap={{ scale: 0.8 }}
+      transition={{ type: "spring", stiffness: 100 }}
+      className="hover:border-blue-400 border-transparent rounded-xl px-[12px] py-[10px] hover:cursor-pointer border-2 bg-blue-100 flex gap-2 group"
+    >
       <Link href={uri} className="text-sm text-blue-600">
         {label}
       </Link>
@@ -21,7 +26,7 @@ export function HomeBadge(props: HomeBadgeProps) {
         className="text-blue-600 group-hover:-translate-y-1 group-hover:translate-x-1 ease-in-out duration-200"
         height={20}
       />
-    </div>
+    </motion.div>
   );
 }
 
