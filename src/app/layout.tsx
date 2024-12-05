@@ -4,10 +4,10 @@ import "./globals.css";
 import { NavBar } from "./components/navbar";
 import { SideBar } from "./components/sidebar";
 
-const Roboto = localFont({
-  src: "./fonts/Roboto-Regular-webfont.woff",
-  variable: "--font-roboto",
-  weight: "100 900",
+const MontSerrat = localFont({
+  src: "./fonts/montserrat-v29-latin-regular.woff2",
+  variable: "--font-montserrat",
+  weight: "100 300",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Roboto.variable} bg-gray-50`}>
+      <body className={`${MontSerrat.variable} bg-gray-50`}>
         <div className="flex flex-col h-screen overflow-hidden">
           <NavBar />
           <div className="flex">

@@ -14,7 +14,7 @@ export function NavBar() {
   };
 
   return (
-    <div className="flex justify-between border-b-2">
+    <div className="flex justify-between border-b-2 font-[family-name:var(--font-montserrat)]">
       <div className="ml-4 mt-4 cursor-pointer">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />

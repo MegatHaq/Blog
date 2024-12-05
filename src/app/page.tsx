@@ -5,7 +5,7 @@ import { cardContent } from "@/lib/constants";
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-roboto)] h-screen px-[5vw] w-4/5 overflow-auto homescrollbar">
+    <div className="font-[family-name:var(--font-montserrat)] h-screen px-[5vw] w-4/5 overflow-auto homescrollbar">
       <h1 className="text-4xl tracking-wide mt-[10vh]">
         Welcome to my blog! My name is Megat!
       </h1>
