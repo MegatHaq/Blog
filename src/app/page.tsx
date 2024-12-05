@@ -36,7 +36,7 @@ export default function Home() {
         I started this blog to connect, learn, and grow with a community of
         curious minds. Whether you're here for a quick read or to dive deep into
         a topic, I hope you find something that resonates with you. So grab a
-        cup of coffee, settle in, and enjoy the journey. Let's create something
+        cup of coffee, settle in, and enjoy the journey. Lets create something
         amazing together!
       </p>
     </div>
