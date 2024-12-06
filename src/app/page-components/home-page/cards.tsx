@@ -25,8 +25,8 @@ export function Cards(props: CardsProps) {
   };
 
   return (
-    <motion.div className="w-[350px]" ref={ref} style={style}>
-      <h1 className="text-2xl">{title}</h1>
+    <motion.div className="md:w-[350px]" ref={ref} style={style}>
+      <h1 className="text-2xl font-bold">{title}</h1>
       <Image
         src={image}
         width={400}
@@ -35,7 +35,9 @@ export function Cards(props: CardsProps) {
         className="mt-[5vh] rounded-md hover:-translate-y-6 ease-in-out duration-300"
       />
       <CardsBadge header={header} />
-      <motion.p className="text-sm mt-[2vh]">{description}</motion.p>
+      <motion.p className="text-sm mt-[2vh] text-justify">
+        {description}
+      </motion.p>
     </motion.div>
   );
 }

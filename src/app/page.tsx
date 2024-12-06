@@ -5,9 +5,9 @@ import { TopContentBlog } from "./page-components/home-page/blog-top-content";
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-montserrat)] h-screen px-[5vw] w-4/5 overflow-auto homescrollbar">
+    <div className="font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar">
       <TopContentBlog />
-      <div className="mt-[5vh] flex gap-8">
+      <div className="mt-[5vh] md:flex grid gap-8 mx-[5vw] md:mx-0">
         {cardContent.map((item) => (
           <Cards
             key={item.title}

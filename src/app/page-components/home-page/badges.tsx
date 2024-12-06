@@ -17,7 +17,7 @@ export function HomeBadge(props: HomeBadgeProps) {
     <motion.div
       whileTap={{ scale: 0.8 }}
       transition={{ type: "spring", stiffness: 100 }}
-      className="hover:border-blue-400 border-transparent rounded-xl px-[12px] py-[10px] hover:cursor-pointer border-2 bg-blue-100 flex gap-2 group"
+      className="hover:border-blue-400 border-transparent rounded-xl px-[12px] py-[10px] hover:cursor-pointer border-2 bg-blue-100 flex gap-2 group md:mt-0 mt-4"
     >
       <Link href={uri} className="text-sm text-blue-600">
         {label}

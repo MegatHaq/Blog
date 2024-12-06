@@ -15,18 +15,6 @@ type SideBarProps = {
 };
 
 export function SideBarComponent(props: SideBarProps) {
-  const container = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.5,
-      },
-    },
-  };
-
   const { header, item } = props;
 
   const [isOpen, setIsOpen] = React.useState(true);
@@ -37,8 +25,17 @@ export function SideBarComponent(props: SideBarProps) {
 
   const IconClass = isOpen ? "rotate-90" : "";
 
+  const itemvariant = {
+    open: {
+      opacity: 1,
+    },
+    closed: {
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="my-2 ml-2">
+    <div className="my-2 ml-2 overflow-hidden">
       <div
         onClick={() => clickHandler()}
         className="hover:cursor-pointer flex gap-2"
@@ -48,25 +45,41 @@ export function SideBarComponent(props: SideBarProps) {
           className={`text-gray-400 ease-in-out duration-200 ${IconClass} z-0`}
         />
       </div>
-      {isOpen && (
-        <motion.div variants={container} intitial="hidden" animate="show">
-          {item.map((item) => (
-            <AnimatePresence key={item.label}>
-              {isOpen && (
-                <motion.div
-                  layout
-                  transition={{ duration: 0.1 }}
-                  className={`hover:bg-blue-100 p-2 ml-2 mr-8 rounded-md flex hover:cursor-pointer`}
-                >
-                  <Link className={`text-sm`} href={item.uri}>
-                    {item.label}
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          ))}
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{
+              height: 0,
+              x: -20,
+            }}
+            animate={{
+              height: "auto",
+              x: 0,
+            }}
+            exit={{
+              height: 0,
+              x: 20,
+            }}
+            transition={{ duration: 0.3, type: "tween" }}
+          >
+            {item.map((item, index) => (
+              <motion.div
+                layout
+                key={item.label}
+                variants={itemvariant}
+                animate="open"
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                initial="closed"
+                className={`hover:bg-blue-100 p-2 ml-2 mr-8 rounded-md flex hover:cursor-pointer`}
+              >
+                <Link className={`text-sm`} href={item.uri}>
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

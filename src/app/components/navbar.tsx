@@ -29,7 +29,7 @@ export function NavBar() {
             <>
               <motion.div
                 key={"sidebar"}
-                className="mt-4 z-20 absolute w-[15vw] right-[2%] bg-slate-50 rounded-lg overflow-hidden pb-4"
+                className="mt-4 z-20 absolute md:w-[15vw] w-[50vw] md:right-[2%] right-[10%] bg-slate-50 rounded-lg overflow-hidden pb-4"
                 layout
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
