@@ -123,14 +123,17 @@ export const navBarItems = [
       {
         Icon: <ArrowRight />,
         label: "Home",
+        uri: "/",
       },
       {
         Icon: <ArrowRight />,
-        label: "Tutorials",
+        label: "Posts",
+        uri: "/post",
       },
       {
         Icon: <ArrowRight />,
         label: "Demos",
+        uri: "#",
       },
     ],
   },
@@ -140,18 +143,22 @@ export const navBarItems = [
       {
         Icon: <Youtube />,
         label: "Youtube",
+        href: "#",
       },
       {
         Icon: <Github />,
         label: "GitHub",
+        href: "#",
       },
       {
         Icon: <Mail />,
         label: "Contact",
+        href: "#",
       },
       {
         Icon: <User />,
         label: "About",
+        href: "#",
       },
     ],
   },

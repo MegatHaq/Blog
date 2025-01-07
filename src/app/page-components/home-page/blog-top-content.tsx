@@ -5,6 +5,8 @@ import { HomeBadge } from "./badges";
 import { useRef } from "react";
 import { useInView, motion } from "motion/react";
 
+// ADD 3 LATEST POSTS TO THE BOTTOM OF OF THE BLOG
+
 export function TopContentBlog() {
   const ref = useRef(null);
   const IsInView = useInView(ref, { once: true });
@@ -17,7 +19,7 @@ export function TopContentBlog() {
 
   return (
     <motion.div ref={ref} style={style} className="mx-[5vw] md:mx-0">
-      <h1 className="md:text-4xl text-2xl md:text-justify text-center tracking-wide mt-[10vh]">
+      <h1 className="md:text-4xl text-2xl md:text-justify text-center tracking-wide mt-[10vh] font-bold">
         Welcome to my blog! My name is <span className="font-bold">Megat!</span>
       </h1>
       <p className="md:text-3xl md:text-justify text-justify mt-4">

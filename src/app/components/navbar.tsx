@@ -1,12 +1,28 @@
 "use client";
 
 import { AlignJustify } from "lucide-react";
-import { navBarItems } from "@/lib/constants";
 import React from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 
-export function NavBar() {
+type navBarProps = {
+  navBarItems: NavBarItems[];
+};
+
+interface NavBarItems {
+  groupName: string;
+  item: Items[];
+}
+
+interface Items {
+  Icon: React.ReactNode;
+  label: string;
+  uri?: string;
+}
+
+export function NavBar(props: navBarProps) {
+  const { navBarItems } = props;
   const [isOpen, setIsOpen] = React.useState(false);
 
   const clickHandler = () => {
@@ -41,14 +57,25 @@ export function NavBar() {
                     <p className="text-sm ml-6 my-3 text-gray-600">
                       {group.groupName}
                     </p>
-                    {group.item.map((item) => (
-                      <div key={item.label} className="bg-gray-200">
-                        <div className="pl-6 pt-2 pb-2 flex gap-4 bg-slate-50 hover:cursor-pointer hover:bg-gray-200 ease-in-out duration-300 hover:translate-x-2">
-                          {item.Icon}
-                          <p className="">{item.label}</p>
+                    {group.item.map(({ uri, label, Icon }) =>
+                      uri ? (
+                        <div key={label} className="bg-gray-200">
+                          <Link href={uri}>
+                            <div className="pl-6 pt-2 pb-2 flex gap-4 bg-slate-50 hover:cursor-pointer hover:bg-gray-200 ease-in-out duration-300 hover:translate-x-2">
+                              {Icon}
+                              <p className="">{label}</p>
+                            </div>
+                          </Link>
                         </div>
-                      </div>
-                    ))}
+                      ) : (
+                        <div key={label} className="bg-gray-200">
+                          <div className="pl-6 pt-2 pb-2 flex gap-4 bg-slate-50 hover:cursor-pointer hover:bg-gray-200 ease-in-out duration-300 hover:translate-x-2">
+                            {Icon}
+                            <p className="">{label}</p>
+                          </div>
+                        </div>
+                      )
+                    )}
                   </div>
                 ))}
               </motion.div>
