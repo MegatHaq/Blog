@@ -13,8 +13,6 @@ type headerChildrenProps = {
 export const TableOfContent = (props: tableOfContentProps) => {
   const { headers } = props;
 
-  const textSize = [null, "2xl", "1xl", "sm"];
-
   const HeaderChildren = ({ children, level }: headerChildrenProps) => {
     return (
       <div
