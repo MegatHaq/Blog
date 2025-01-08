@@ -2,7 +2,6 @@ import { Cards } from "./page-components/home-page/cards";
 import { cardContent } from "@/lib/constants";
 import { WhyBlog } from "./page-components/home-page/blog-bottom-content";
 import { TopContentBlog } from "./page-components/home-page/blog-top-content";
-import Link from "next/link";
 
 export default function Home() {
   return (
