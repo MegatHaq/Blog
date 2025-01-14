@@ -32,13 +32,18 @@ export type Home = {
   lastcontent: contentData[];
   midcontent: contentData[];
   description: string;
-  documentId: string;
-  tags1: string;
-  tags2: string;
-  tags3: string;
-  imagetag1: string;
-  imagetag2: string;
-  imagetag3: string;
+  header_tag: HeaderTag[];
+  image_tag: ImageTag[];
+};
+
+export type HeaderTag = {
+  id: string;
+  tag: string;
+};
+
+export type ImageTag = {
+  id: string;
+  tag: string;
 };
 
 export type HomeData = {

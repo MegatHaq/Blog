@@ -1,19 +1,24 @@
 import { gql } from "@apollo/client";
 
 export const GET_HOME_PAGE_DATA = gql`
-  query Query {
+  query HomePage {
     homePage {
       content
+      publishedAt
       lastcontent
       midcontent
-      description
-      documentId
-      tags1
-      tags2
-      tags3
-      imagetag1
-      imagetag2
-      imagetag3
+      header_tag {
+        id
+        tag
+        uri
+      }
+      image_description {
+        id
+        image_tag {
+          id
+          tag
+        }
+      }
     }
   }
 `;
