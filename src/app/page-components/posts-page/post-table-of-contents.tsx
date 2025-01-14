@@ -1,5 +1,6 @@
 import { contentData } from "@/lib/types";
 import { AlignRight } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 
 type tableOfContentProps = {
   headers: contentData[];
@@ -14,15 +15,13 @@ export const TableOfContent = (props: tableOfContentProps) => {
   const { headers } = props;
 
   const HeaderChildren = ({ children, level }: headerChildrenProps) => {
-    return (
-      <div
-        className={`text-sm cursor-pointer hover:text-gray-950 ml-[${
-          20 * level
-        }px]`}
-      >
-        {children}
-      </div>
-    );
+    const baseClass = "text-sm cursor-pointer hover:text-gray-950";
+    const additionalClasses =
+      level == 1 ? "ml-[20px]" : level == 2 ? "ml-[40px]" : "ml-[60px]";
+
+    const combinedClass = twMerge(baseClass, additionalClasses);
+
+    return <div className={combinedClass}>{children}</div>;
   };
 
   return (

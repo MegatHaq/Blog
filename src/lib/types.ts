@@ -1,12 +1,21 @@
-export interface postData {
-  content: contentData[];
-  createdAt: string;
+export type PostsTitle = {
+  title: String;
   documentId: string;
-  id: number;
+};
+
+export type PostsTitleList = {
+  posts: PostsTitle[];
+};
+
+export type PostData = {
+  post: Post;
+};
+
+export type Post = {
+  content: contentData[];
   title: string;
   publishedAt: string;
-  updatedAt: string;
-}
+};
 
 export interface contentData {
   children: childrenData[];
@@ -18,18 +27,20 @@ export interface childrenData {
   text: string;
   type: string;
 }
-
-export interface HomeData {
-  id: number;
-  documentId: string;
+export type Home = {
   content: contentData[];
-  description: string;
   lastcontent: contentData[];
   midcontent: contentData[];
-  imagetag1: string;
-  imagetag2: string;
-  imagetag3: string;
+  description: string;
+  documentId: string;
   tags1: string;
   tags2: string;
   tags3: string;
-}
+  imagetag1: string;
+  imagetag2: string;
+  imagetag3: string;
+};
+
+export type HomeData = {
+  homePage: Home;
+};

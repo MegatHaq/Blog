@@ -1,8 +1,8 @@
-import { postData } from "@/lib/types";
+import { PostsTitle } from "@/lib/types";
 import Link from "next/link";
 
 type postProps = {
-  data: postData[];
+  data: PostsTitle[];
 };
 
 export const Post = (props: postProps) => {

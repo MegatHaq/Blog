@@ -1,33 +1,26 @@
-import { contentData } from "@/lib/types";
+import { PostsTitleList } from "@/lib/types";
 import { Post } from "./posts";
-import { TableOfContent } from "./post-table-of-contents";
+import { query } from "@/lib/ApolloClient";
+import { GET_POST_TITLES } from "@/graphql/post";
+import { ErrorPage } from "@/app/components/error-page";
 
 export const PostContainer = async () => {
   // This is where the fetching occurs.
-
-  function getHeaders(contentData: contentData) {
-    if (contentData.type == "heading") {
-      return contentData;
-    }
-  }
-
+  // TODO : ADD TABLE OF CONTENTS AS A SIDE BAR COMPONENT
   try {
-    const data = await fetch(`${process.env.STRAPI_BACKEND}/api/posts`);
-    const posts = await data.json();
+    const { data } = await query<PostsTitleList>({
+      query: GET_POST_TITLES,
+    });
 
-    const headers = posts?.data[1]?.content?.filter(getHeaders);
     return (
       <div className="flex">
         <div className="w-4/5">
-          <Post data={posts?.data} />
-        </div>
-        <div className="w-1/5">
-          <TableOfContent headers={headers} />
+          <Post data={data?.posts} />
         </div>
       </div>
     );
   } catch (error) {
     console.log(error);
-    return <div>Error fetching data.</div>;
+    return <ErrorPage />;
   }
 };

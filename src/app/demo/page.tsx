@@ -1,30 +1,25 @@
-import { getHeaders } from "@/lib/utils";
-import { BottomContent } from "../page-components/home-page/bottom-content";
-import { MiddleContent } from "../page-components/home-page/mid-content";
-import { TopContent } from "../page-components/home-page/top-content";
-import { TableOfContent } from "../page-components/posts-page/post-table-of-contents";
+import { query } from "@/lib/ApolloClient";
+import { GET_HOME_PAGE_DATA } from "@/graphql/home-data";
+import { HomeData } from "@/lib/types";
+import { ErrorPage } from "../components/error-page";
+import { RenderContent } from "../components/render-content-data";
 
 export default async function () {
   try {
-    const data = await fetch(`${process.env.STRAPI_BACKEND}/api/home-page`);
-    const homeData = await data.json();
-
-    const headers = homeData?.data?.content?.filter(getHeaders);
+    const { data } = await query<HomeData>({ query: GET_HOME_PAGE_DATA });
 
     return (
       <div className="pt-[5vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex">
         <div className="w-4/5">
-          <TopContent homeData={homeData.data} />
-          <MiddleContent homeData={homeData.data} />
-          <BottomContent homeData={homeData.data} />
+          <RenderContent data={data?.homePage.content} />
+          <RenderContent data={data?.homePage.midcontent} />
+          <RenderContent data={data?.homePage.lastcontent} />
         </div>
-        <div className="w-1/5">
-          <TableOfContent headers={headers} />
-        </div>
+        <div className="w-1/5"></div>
       </div>
     );
   } catch (error) {
     console.log(error);
-    return <div>Failed fetching data</div>;
+    return <ErrorPage />;
   }
 }
