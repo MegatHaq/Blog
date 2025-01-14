@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavBar } from "./components/navbar";
 import { SideBar } from "./components/sidebar";
 import { navBarItems } from "@/lib/constants";
+import { ApolloWrapper } from "@/lib/ApolloWrapper";
 
 const MontSerrat = localFont({
   src: "./fonts/montserrat-v29-latin-regular.woff2",
@@ -24,13 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${MontSerrat.variable} bg-gray-50`}>
-        <div className="flex flex-col h-screen overflow-hidden">
-          <NavBar navBarItems={navBarItems} />
-          <div className="flex">
-            <SideBar />
-            {children}
+        <ApolloWrapper>
+          <div className="flex flex-col h-screen overflow-hidden">
+            <NavBar navBarItems={navBarItems} />
+            <div className="flex">
+              <SideBar />
+              {children}
+            </div>
           </div>
-        </div>
+        </ApolloWrapper>
       </body>
     </html>
   );

@@ -1,3 +1,4 @@
+import { ErrorPage } from "@/app/components/error-page";
 import { TableOfContent } from "@/app/page-components/posts-page/post-table-of-contents";
 import { contentData } from "@/lib/types";
 import { getHeaders } from "@/lib/utils";
@@ -67,8 +68,6 @@ export default async function BlogPost({ params }: { params: Params }) {
       /[0-9]{4}-[0-9]{2}-[0-9]{2}/
     );
 
-    console.log(posts);
-
     return (
       <div className="pt-[5vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex">
         <div className="w-4/5 mr-[5vw]">
@@ -81,12 +80,12 @@ export default async function BlogPost({ params }: { params: Params }) {
             <BackButton>BACK</BackButton>
           </div>
         </div>
-        <div className="w-1/5 ">
+        <div className="w-1/5">
           <TableOfContent headers={headers} />
         </div>
       </div>
     );
   } catch (error) {
-    return <div>Error during fetching data</div>;
+    return <ErrorPage />;
   }
 }
