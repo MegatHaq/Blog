@@ -13,11 +13,11 @@ export default async function () {
     const { data } = await query<HomeData>({ query: GET_HOME_PAGE_DATA });
     // const headers = data?.post?.content?.filter(getHeaders);
 
-    const headers1 = data?.homePage.content?.filter(getHeaders);
-    const headers2 = data?.homePage.midcontent?.filter(getHeaders);
-    const headers3 = data?.homePage.lastcontent?.filter(getHeaders);
-
-    const headers = headers1.concat(headers2, headers3);
+    const headers = [
+      ...(data?.homePage.content || []),
+      ...(data?.homePage.midcontent || []),
+      ...(data?.homePage.lastcontent || []),
+    ].filter(getHeaders);
 
     return (
       <div className="pt-[5vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex">
