@@ -10,10 +10,13 @@ type CardsProps = {
   image: string;
   description: string;
   image_tag: ImageTag[];
+  publishedAt?: string;
 };
 
 export function Cards(props: CardsProps) {
-  const { title, image, image_tag, description } = props;
+  const { title, image, image_tag, description, publishedAt } = props;
+
+  const date = publishedAt?.match(/[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/);
 
   const ref = useRef(null);
   const IsInView = useInView(ref, { once: true });
@@ -37,12 +40,15 @@ export function Cards(props: CardsProps) {
           className="rounded-md"
         />
       </motion.div>
-      {image_tag.map(({ tag, id }) => {
+      {image_tag?.map(({ tag, id }) => {
         return <CardsBadge header={tag} key={id} />;
       })}
       <motion.p className="text-sm mt-[2vh] text-justify">
         {description}
       </motion.p>
+      {publishedAt && (
+        <p className="text-sm text-gray-600 flex justify-center">{date}</p>
+      )}
     </motion.div>
   );
 }

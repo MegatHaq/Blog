@@ -1,6 +1,10 @@
 export type PostsTitle = {
-  title: String;
+  title: string;
+  publishedAt: string;
+  image: ImageData;
   documentId: string;
+  synopsis: string;
+  category: HeaderTag[];
 };
 
 export type PostsTitleList = {

@@ -1,5 +1,5 @@
 import { PostsTitle } from "@/lib/types";
-import Link from "next/link";
+import { Cards } from "../home-page/cards";
 
 type postProps = {
   data: PostsTitle[];
@@ -10,13 +10,21 @@ export const Post = (props: postProps) => {
 
   return (
     <div>
-      {data?.map(({ title, documentId }, index) => (
-        <div key={index}>
-          <Link href={`/post/${documentId}`}>
-            <h1>{title}</h1>
-          </Link>
-        </div>
-      ))}
+      {data.map(
+        ({ documentId, synopsis, category, title, image, publishedAt }) => {
+          return (
+            <div key={documentId}>
+              <Cards
+                image_tag={category}
+                description={synopsis}
+                title={title}
+                image={process.env.STRAPI_BACKEND + image.url}
+                publishedAt={publishedAt}
+              />
+            </div>
+          );
+        }
+      )}
     </div>
   );
 };

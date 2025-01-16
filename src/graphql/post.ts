@@ -1,9 +1,18 @@
 import { gql } from "@apollo/client";
 
 export const GET_POST_TITLES = gql`
-  query Query {
+  query Post {
     posts {
       title
+      synopsis
+      image {
+        url
+      }
+      publishedAt
+      category {
+        id
+        tag
+      }
       documentId
     }
   }
