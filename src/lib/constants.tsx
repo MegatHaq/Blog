@@ -133,7 +133,7 @@ export const navBarItems = [
       {
         Icon: <ArrowRight />,
         label: "Demos",
-        uri: "/demo",
+        uri: "#",
       },
     ],
   },
