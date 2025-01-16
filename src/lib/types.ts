@@ -27,13 +27,31 @@ export interface childrenData {
   text: string;
   type: string;
 }
+export type HomeData = {
+  homePage: Home;
+};
+
 export type Home = {
+  main_content: HomeContent[];
+};
+
+export type HomeContent = {
   content: contentData[];
-  lastcontent: contentData[];
-  midcontent: contentData[];
-  description: string;
-  header_tag: HeaderTag[];
+  tags?: HeaderTag[];
+  card?: Card[];
+  id: string;
+};
+
+export type Card = {
+  id: string;
   image_tag: ImageTag[];
+  image_description: string;
+  image: ImageData;
+};
+
+export type ImageData = {
+  url: string;
+  caption: string;
 };
 
 export type HeaderTag = {
@@ -44,8 +62,4 @@ export type HeaderTag = {
 export type ImageTag = {
   id: string;
   tag: string;
-};
-
-export type HomeData = {
-  homePage: Home;
 };

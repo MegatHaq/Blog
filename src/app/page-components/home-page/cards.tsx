@@ -1,19 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import { CardsBadge } from "./badges";
 import { useRef } from "react";
 import { useInView, motion } from "motion/react";
+import { ImageTag } from "@/lib/types";
 
 type CardsProps = {
   title: string;
   image: string;
-  header: string;
   description: string;
+  image_tag: ImageTag[];
 };
 
 export function Cards(props: CardsProps) {
-  const { title, image, header, description } = props;
+  const { title, image, image_tag, description } = props;
 
   const ref = useRef(null);
   const IsInView = useInView(ref, { once: true });
@@ -26,18 +26,20 @@ export function Cards(props: CardsProps) {
 
   return (
     <motion.div className="w-full" ref={ref} style={style}>
-      <h1 className="text-2xl font-bold text-center">{title}</h1>
-      <motion.div className="group mt-[5vh] w-full hover:-translate-y-6 ease-in-out duration-300">
-        <Image
+      <h1 className="text-2xl font-bold mb-[3vh]">{title}</h1>
+      <motion.div className="group w-full hover:-translate-y-6 ease-in-out duration-300">
+        <img
           key={image}
           src={image}
           width={400}
           height={400}
           alt=""
-          className=" rounded-md"
+          className="rounded-md"
         />
       </motion.div>
-      <CardsBadge header={header} />
+      {image_tag.map(({ tag, id }) => {
+        return <CardsBadge header={tag} key={id} />;
+      })}
       <motion.p className="text-sm mt-[2vh] text-justify">
         {description}
       </motion.p>

@@ -42,8 +42,9 @@ export default async function BlogPost({ params }: { params: Params }) {
         <div className="w-4/5 mr-[5vw]">
           <h1 className="text-3xl font-bold">{data?.post?.title}</h1>
           <h2 className="text-1xl mt-4">Date : {publishedDate}</h2>
+          {/* ADD IMAGES TO DISPLAY FOR EACH POST */}
           <article className="mt-6 text-justify">
-            {/* create a reusable component to render JSON CONTENT */}
+            {/* ADD CATEGORIES TAGS/BADGES FOR EACH POST */}
             <RenderContent data={data?.post?.content} />
           </article>
           <div className="mt-8 pb-[20vh]">

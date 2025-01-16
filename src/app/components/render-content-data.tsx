@@ -11,6 +11,8 @@ type ContentChildrenProps = {
   level: number;
 };
 
+// this is for rendering json-based content data from strapi backend .
+
 export const ContentChildren = (props: ContentChildrenProps) => {
   const { type, text, level } = props;
 

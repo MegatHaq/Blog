@@ -13,7 +13,7 @@ const MontSerrat = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Megats.",
+  title: "Blog",
   description: "Megat blog",
 };
 
