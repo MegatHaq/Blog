@@ -130,11 +130,6 @@ export const navBarItems = [
         label: "Posts",
         uri: "/post",
       },
-      {
-        Icon: <ArrowRight />,
-        label: "Demos",
-        uri: "#",
-      },
     ],
   },
   {

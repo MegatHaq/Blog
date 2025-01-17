@@ -15,6 +15,7 @@ export const Post = (props: postProps) => {
           return (
             <div key={documentId}>
               <Cards
+                documentId={documentId}
                 image_tag={category}
                 description={synopsis}
                 title={title}
