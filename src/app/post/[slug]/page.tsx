@@ -1,5 +1,7 @@
 import { ErrorPage } from "@/app/components/error-page";
 import { RenderContent } from "@/app/components/render-content-data";
+import { CardsBadge } from "@/app/page-components/home-page/badges";
+import { Gallery } from "@/app/page-components/posts-page/gallery";
 import { TableOfContent } from "@/app/page-components/posts-page/post-table-of-contents";
 import { GET_POST } from "@/graphql/post";
 import { query } from "@/lib/ApolloClient";
@@ -41,8 +43,16 @@ export default async function BlogPost({ params }: { params: Params }) {
       <div className="pt-[5vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex">
         <div className="w-4/5 mr-[5vw]">
           <h1 className="text-3xl font-bold">{data?.post?.title}</h1>
+          {data?.post?.category.map(({ tag, id }) => {
+            return <CardsBadge header={tag} key={id} />;
+          })}
           <h2 className="text-1xl mt-4">Date : {publishedDate}</h2>
-          {/* ADD IMAGES TO DISPLAY FOR EACH POST */}
+          <div className="flex justify-center">
+            <Gallery
+              imageCaption={data?.post?.image?.caption}
+              imageUri={process.env.STRAPI_BACKEND + data?.post?.image?.url}
+            />
+          </div>
           <article className="mt-6 text-justify">
             {/* ADD CATEGORIES TAGS/BADGES FOR EACH POST */}
             <RenderContent data={data?.post?.content} />

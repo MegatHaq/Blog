@@ -16,9 +16,11 @@ export type PostData = {
 };
 
 export type Post = {
-  content: contentData[];
   title: string;
+  category: HeaderTag[];
+  content: contentData[];
   publishedAt: string;
+  image: ImageData;
 };
 
 export interface contentData {

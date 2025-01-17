@@ -19,11 +19,19 @@ export const GET_POST_TITLES = gql`
 `;
 
 export const GET_POST = gql`
-  query Query($documentId: ID!) {
+  query Post($documentId: ID!) {
     post(documentId: $documentId) {
-      content
       title
+      category {
+        id
+        tag
+      }
+      content
       publishedAt
+      image {
+        caption
+        url
+      }
     }
   }
 `;

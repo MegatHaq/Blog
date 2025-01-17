@@ -1,4 +1,12 @@
-import { ArrowRight, Github, Mail, Moon, User, Youtube } from "lucide-react";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  Moon,
+  User,
+  Youtube,
+} from "lucide-react";
 
 export const sideBarItems = [
   {
@@ -136,8 +144,8 @@ export const navBarItems = [
     groupName: "Socials",
     item: [
       {
-        Icon: <Youtube />,
-        label: "Youtube",
+        Icon: <Linkedin />,
+        label: "LinkedIn",
         href: "#",
       },
       {
