@@ -1,12 +1,21 @@
 import { query } from "@/lib/ApolloClient";
 import { GET_HOME_PAGE_DATA } from "@/graphql/home-data";
-import { Card, contentData, HeaderTag, HomeData } from "@/lib/types";
+import {
+  Card,
+  contentData,
+  HeaderTag,
+  HomeData,
+  PostsTitleList,
+} from "@/lib/types";
 import { ErrorPage } from "./components/error-page";
 import { RenderContent } from "./components/render-content-data";
 import { HomeBadge } from "./page-components/home-page/badges";
 import { Cards } from "./page-components/home-page/cards";
 import { getHeaders } from "@/lib/utils";
 import { TableOfContent } from "./page-components/posts-page/post-table-of-contents";
+import { Loader } from "./components/loader";
+import { PostCards } from "./page-components/home-page/post-cards";
+import { GET_POSTS } from "@/graphql/post";
 
 export default async function () {
   const MainContent = ({
@@ -48,16 +57,26 @@ export default async function () {
   };
 
   try {
-    const { data } = await query<HomeData>({ query: GET_HOME_PAGE_DATA });
+    const { data, loading } = await query<HomeData>({
+      query: GET_HOME_PAGE_DATA,
+    });
+
+    const { data: dataCards } = await query<PostsTitleList>({
+      query: GET_POSTS,
+    });
 
     const headers = data?.homePage?.main_content
       .flatMap(({ content }) => [content])
       .flat()
       .filter(getHeaders);
 
+    if (loading) {
+      return <Loader />;
+    }
+
     return (
-      <div className="pt-[4vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex">
-        <div className="w-4/5 mr-[5vw]">
+      <div className="pt-[4vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex gap-4">
+        <div className="w-4/5">
           {data?.homePage?.main_content.map(({ id, content, tags, card }) => {
             return (
               <MainContent
@@ -68,8 +87,30 @@ export default async function () {
               />
             );
           })}
-
-          <div className="pb-[20vh]"></div>
+          <div className="pb-[20vh]">
+            {dataCards.posts.map(
+              ({
+                category,
+                documentId,
+                image,
+                publishedAt,
+                synopsis,
+                title,
+              }) => {
+                return (
+                  <PostCards
+                    key={documentId}
+                    category={category}
+                    documentId={documentId}
+                    image={image}
+                    publishedAt={publishedAt}
+                    synopsis={synopsis}
+                    title={title}
+                  />
+                );
+              }
+            )}
+          </div>
         </div>
         <div className="w-1/5 pt-[2vh]">
           <TableOfContent headers={headers} />

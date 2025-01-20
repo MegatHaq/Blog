@@ -62,9 +62,13 @@ export function Cards(props: CardsProps) {
       <motion.p className="text-sm mt-[2vh] text-justify">
         {description}
       </motion.p>
-      {publishedAt && (
-        <p className="text-sm text-gray-600 flex justify-center">{date}</p>
-      )}
+      <div className="flex justify-end">
+        {publishedAt && (
+          <p className="px-2 py-1 bg-slate-700 mt-4 rounded-md text-gray-200 text-sm">
+            {date}
+          </p>
+        )}
+      </div>
     </motion.div>
   );
 }
