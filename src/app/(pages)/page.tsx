@@ -7,14 +7,14 @@ import {
   HomeData,
   PostsTitleList,
 } from "@/lib/types";
-import { ErrorPage } from "./components/error-page";
-import { RenderContent } from "./components/render-content-data";
-import { HomeBadge } from "./page-components/home-page/badges";
-import { Cards } from "./page-components/home-page/cards";
+import { ErrorPage } from "../components/error-page";
+import { RenderContent } from "../components/render-content-data";
+import { HomeBadge } from "../page-components/home-page/badges";
+import { Cards } from "../page-components/home-page/cards";
 import { getHeaders } from "@/lib/utils";
-import { TableOfContent } from "./page-components/posts-page/post-table-of-contents";
-import { Loader } from "./components/loader";
-import { PostCards } from "./page-components/home-page/post-cards";
+import { TableOfContent } from "../page-components/posts-page/post-table-of-contents";
+import { Loader } from "../components/loader";
+import { PostCards } from "../page-components/home-page/post-cards";
 import { GET_POSTS } from "@/graphql/post";
 
 export default async function () {
