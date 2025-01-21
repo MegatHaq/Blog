@@ -47,7 +47,7 @@ export default async function BlogPost({ params }: { params: Params }) {
             return <CardsBadge header={tag} key={id} />;
           })}
           <h2 className="text-1xl mt-4">Date : {publishedDate}</h2>
-          <div className="flex justify-center">
+          <div className="flex justify-center w-4/5 mx-auto mt-8">
             <Gallery
               imageCaption={data?.post?.image?.caption}
               imageUri={process.env.STRAPI_BACKEND + data?.post?.image?.url}
@@ -61,7 +61,7 @@ export default async function BlogPost({ params }: { params: Params }) {
             <BackButton>BACK</BackButton>
           </div>
         </div>
-        <div className="w-1/5">
+        <div className="w-1/5 sticky top-0">
           <TableOfContent headers={headers} />
         </div>
       </div>

@@ -59,7 +59,7 @@ export function Cards(props: CardsProps) {
       {image_tag?.map(({ tag, id }) => {
         return <CardsBadge header={tag} key={id} />;
       })}
-      <motion.p className="text-sm mt-[2vh] text-justify">
+      <motion.p className="text-sm mt-[2vh] text-justify font-[family-name:var(--font-nunito)]">
         {description}
       </motion.p>
       <div className="flex justify-end">

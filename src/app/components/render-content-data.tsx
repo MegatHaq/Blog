@@ -20,7 +20,7 @@ export const ContentChildren = (props: ContentChildrenProps) => {
 
   const additionalClasses =
     type !== "heading"
-      ? "text-1xl"
+      ? "text-1xl font-[family-name:var(--font-nunito)]"
       : level == 1
         ? "text-3xl font-bold my-4"
         : level == 2

@@ -75,8 +75,8 @@ export default async function () {
     }
 
     return (
-      <div className="pt-[4vh] font-[family-name:var(--font-montserrat)] h-screen px-[5vw] md:w-4/5 overflow-auto homescrollbar flex gap-4">
-        <div className="w-4/5">
+      <div className="pt-[4vh] font-[family-name:var(--font-montserrat)] h-screen md:w-4/5 overflow-auto homescrollbar flex gap-4">
+        <div className="w-4/5 px-[3vw]">
           {data?.homePage?.main_content.map(({ id, content, tags, card }) => {
             return (
               <MainContent
@@ -112,7 +112,7 @@ export default async function () {
             )}
           </div>
         </div>
-        <div className="w-1/5 pt-[2vh]">
+        <div className="w-1/5 pt-[2vh] sticky top-0">
           <TableOfContent headers={headers} />
         </div>
       </div>
